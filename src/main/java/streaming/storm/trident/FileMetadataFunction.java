@@ -17,10 +17,11 @@ import streaming.storm.FileMetadata;
 
 public class FileMetadataFunction extends BaseFunction {
 
+	private static final String FIELD = "file";
 	private static final long serialVersionUID = 1L;
 
 	public void execute(TridentTuple tuple, TridentCollector collector) {
-		Object swift = tuple.getValueByField("swift");
+		Object swift = tuple.getValueByField(FIELD);
 		if(swift instanceof File) {
 			File swiftFile = (File) swift;
 			List<Object> value = new ArrayList<Object>();

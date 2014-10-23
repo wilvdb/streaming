@@ -20,12 +20,14 @@ import backtype.storm.tuple.Tuple;
 
 public class FileMetadataBolt extends BaseRichBolt {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private OutputCollector collector;
 
 	public void execute(Tuple tuple) {
-		Object swift = tuple.getValueByField("swift");
-		if(swift instanceof File) {
-			File swiftFile = (File) swift;
+		Object file = tuple.getValueByField("file");
+		if(file instanceof File) {
+			File swiftFile = (File) file;
 			List<Object> value = new ArrayList<Object>();
 			FileMetadata metadata = new FileMetadata();
 			value.add(metadata);
@@ -34,7 +36,7 @@ public class FileMetadataBolt extends BaseRichBolt {
 			metadata.setProcessingDate(new Date());
 			CRC32 crc = new CRC32();
 			try {
-				String content = FileUtils.readFileToString((File) swift);
+				String content = FileUtils.readFileToString((File) file);
 				value.add(content);
 				crc.update(content.getBytes());
 				metadata.setChecksum(crc.getValue());
@@ -47,6 +49,7 @@ public class FileMetadataBolt extends BaseRichBolt {
 		//collector.ack(tuple);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
 		this.collector = collector;
 

@@ -8,13 +8,15 @@ import backtype.storm.tuple.Tuple;
 
 public class ExtractBolt extends BaseBasicBolt {
 
+	private static final long serialVersionUID = 1L;
+
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
 		declarer.declare(new Fields("content"));
 
 	}
 
 	public void execute(Tuple input, BasicOutputCollector collector) {
-		String swift = input.getStringByField("content");
+		String content = input.getStringByField("content");
 		FileMetadata metadata = (FileMetadata) input.getValueByField("metadata");
 		
 	}

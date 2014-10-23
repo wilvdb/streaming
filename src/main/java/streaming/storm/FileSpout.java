@@ -17,6 +17,8 @@ import backtype.storm.tuple.Fields;
 
 public class FileSpout extends BaseRichSpout implements FileAlterationListener {
 
+	private static final long serialVersionUID = 1L;
+
 	private SpoutOutputCollector collector;
 
 	private List<File> files = new ArrayList<File>();
@@ -38,13 +40,14 @@ public class FileSpout extends BaseRichSpout implements FileAlterationListener {
 		files.clear();
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void open(Map conf, TopologyContext context,
 			SpoutOutputCollector collector) {
 		this.collector = collector;
 	}
 
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-		declarer.declare(new Fields("swift"));
+		declarer.declare(new Fields("file"));
 	}
 
 	@Override

@@ -45,7 +45,7 @@ public class StormTridentIT {
 	@Test
 	public void test() throws UnknownHostException, MongoException {
 		TridentTopology topology = new TridentTopology();
-		topology.newStream("streaming", new FileSpout("C:/temp")).each(new Fields("swift"), new FileMetadataFunction(), new Fields("metadata", "content"))
+		topology.newStream("streaming", new FileSpout("C:/temp")).each(new Fields("file"), new FileMetadataFunction(), new Fields("metadata", "content"))
 		.partitionPersist(new MongoDBState.Factory(), new Fields("metadata", "content"), new MongoDBStateUpdater()).parallelismHint(2);
 		
 		Config conf = new Config(); 
