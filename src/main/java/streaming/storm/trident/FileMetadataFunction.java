@@ -17,6 +17,8 @@ import streaming.storm.FileMetadata;
 
 public class FileMetadataFunction extends BaseFunction {
 
+	private static final long serialVersionUID = 1L;
+
 	public void execute(TridentTuple tuple, TridentCollector collector) {
 		Object swift = tuple.getValueByField("swift");
 		if(swift instanceof File) {

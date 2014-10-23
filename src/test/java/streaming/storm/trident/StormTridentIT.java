@@ -4,20 +4,9 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.mongodb.DB;
-import com.mongodb.Mongo;
-import com.mongodb.MongoException;
-
-import de.flapdoodle.embed.mongo.MongodExecutable;
-import de.flapdoodle.embed.mongo.MongodProcess;
-import de.flapdoodle.embed.mongo.MongodStarter;
-import de.flapdoodle.embed.mongo.config.MongodConfig;
-import de.flapdoodle.embed.mongo.distribution.Version;
-import de.flapdoodle.embed.mongo.tests.MongodForTestsFactory;
 import storm.trident.TridentTopology;
 import streaming.storm.FileMetadata;
 import streaming.storm.FileSpout;
@@ -25,6 +14,14 @@ import backtype.storm.Config;
 import backtype.storm.LocalCluster;
 import backtype.storm.tuple.Fields;
 import backtype.storm.utils.Utils;
+
+import com.mongodb.MongoException;
+
+import de.flapdoodle.embed.mongo.MongodExecutable;
+import de.flapdoodle.embed.mongo.MongodProcess;
+import de.flapdoodle.embed.mongo.MongodStarter;
+import de.flapdoodle.embed.mongo.config.MongodConfig;
+import de.flapdoodle.embed.mongo.distribution.Version;
 
 public class StormTridentIT {
 

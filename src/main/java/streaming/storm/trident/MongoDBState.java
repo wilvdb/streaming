@@ -25,6 +25,9 @@ public class MongoDBState<T> implements MapState<T> {
 	
 	public static class Factory implements StateFactory {
 
+		private static final long serialVersionUID = 1L;
+
+		@SuppressWarnings("rawtypes")
 		public State makeState(Map conf, IMetricsContext metrics,
 				int partitionIndex, int numPartitions) {
 
@@ -56,6 +59,7 @@ public class MongoDBState<T> implements MapState<T> {
 		
 	}
 
+	@SuppressWarnings("rawtypes")
 	public List<T> multiUpdate(List<List<Object>> keys,
 			List<ValueUpdater> updaters) {
 		// TODO Auto-generated method stub
