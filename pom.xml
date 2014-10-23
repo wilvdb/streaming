@@ -28,40 +28,18 @@
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>1.6.0.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+			<version>1.31</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>com.github.joelittlejohn.embedmongo</groupId>
-				<artifactId>embedmongo-maven-plugin</artifactId>
-				<version>0.1.12</version>
-				<executions>
-					<execution>
-						<id>start</id>
-						<goals>
-							<goal>start</goal>
-						</goals>
-						<configuration>
-							<version>2.0.4</version>
-							<!-- optional, default 2.2.1 -->
-
-							<databaseDirectory>/tmp/mongotest</databaseDirectory>
-							<!-- optional, default is a new dir in java.io.tmpdir -->
-
-							<downloadPath>http://internal-mongo-repo/</downloadPath>
-							<!-- optional, default is http://fastdl.mongodb.org/ -->
-
-						</configuration>
-					</execution>
-					<execution>
-						<id>stop</id>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 </project>
