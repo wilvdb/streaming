@@ -32,5 +32,6 @@
 	<modules>
 		<module>storm</module>
 		<module>spring-xd</module>
+		<module>spark</module>
 	</modules>
 </project>
