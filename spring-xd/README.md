@@ -1,1 +1,6 @@
+Spring XD
+=========
+
+...
 stream create --name streamTest --definition "file --ref=true --dir=C:/temp | filetransformer | mongodb --databaseName=test --collectionName=stream" –deploy
+...
